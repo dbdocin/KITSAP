@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1600" viewBox="0 0 900 1600" role="img" aria-label="Placeholder frame">
+  <defs>
+    <radialGradient id="glow-projectportrait1" cx="0.5" cy="0.3" r="0.8" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#c8ff3d" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#c8ff3d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fade-projectportrait1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#080808" stop-opacity="0"/>
+      <stop offset="1" stop-color="#080808" stop-opacity="0.75"/>
+    </linearGradient>
+    <filter id="grain-projectportrait1" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="31" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+  <rect width="900" height="1600" fill="#0d0d0d"/>
+  <rect width="900" height="1600" fill="url(#glow-projectportrait1)"/>
+  <rect width="900" height="1600" fill="url(#fade-projectportrait1)"/>
+  <rect width="900" height="1600" filter="url(#grain-projectportrait1)" opacity="0.11"/>
+  <g fill="none" stroke="#f5f5f5" stroke-opacity="0.12" stroke-width="1">
+    <rect x="45" y="45" width="810" height="1510"/>
+    <line x1="300" y1="45" x2="300" y2="1555" stroke-opacity="0.05"/>
+    <line x1="600" y1="45" x2="600" y2="1555" stroke-opacity="0.05"/>
+    <line x1="45" y1="533.3333333333334" x2="855" y2="533.3333333333334" stroke-opacity="0.05"/>
+    <line x1="45" y1="1066.6666666666667" x2="855" y2="1066.6666666666667" stroke-opacity="0.05"/>
+  </g>
+  <g stroke="#f5f5f5" stroke-opacity="0.35" stroke-width="1.5" fill="none">
+    <path d="M45 77V45H77"/>
+    <path d="M823 45H855V77"/>
+    <path d="M45 1523V1555H77"/>
+    <path d="M823 1555H855V1523"/>
+  </g>
+  <text x="87" y="1549" fill="#f5f5f5" fill-opacity="0.3" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="4.5">KITSAP</text>
+</svg>

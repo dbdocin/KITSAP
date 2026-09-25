@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors (Brief §3) */
+  --color-bg: #080808;
+  --color-bg-elevated: #101010;
+  --color-card: #161616;
+  --color-border: #262626;
+  --color-text: #f5f5f5;
+  --color-text-secondary: #a1a1a1;
+  --color-text-muted: #737373;
+  --color-accent: #c8ff3d;
+
+  /* Fonts — variables are set by next/font in layout.tsx */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Fluid type scale */
+  --text-hero: clamp(2.75rem, 1.2rem + 7.2vw, 8.5rem);
+  --text-hero--line-height: 0.92;
+  --text-hero--letter-spacing: -0.04em;
+  --text-hero--font-weight: 700;
+
+  --text-h2: clamp(2rem, 1rem + 4.2vw, 5rem);
+  --text-h2--line-height: 1;
+  --text-h2--letter-spacing: -0.03em;
+  --text-h2--font-weight: 700;
+
+  --text-h3: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+  --text-h3--line-height: 1.15;
+  --text-h3--letter-spacing: -0.02em;
+  --text-h3--font-weight: 600;
+
+  --text-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-body--line-height: 1.6;
+
+  --text-label: 0.75rem;
+  --text-label--line-height: 1;
+  --text-label--letter-spacing: 0.16em;
+  --text-label--font-weight: 500;
+
+  /* Container widths */
+  --container-page: 80rem;
+  --container-narrow: 56rem;
+  --container-prose: 65ch;
+
+  /* Layout */
+  --spacing-gutter: clamp(1.25rem, 0.5rem + 3vw, 3rem);
+}
+
+@layer base {
+  html {
+    background-color: var(--color-bg);
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
