@@ -30,11 +30,20 @@ export const budgetOptions = [
 ] as const;
 
 export const timelineOptions = [
-  "As soon as possible",
+  "ASAP",
   "Within 1 week",
-  "Within 2 weeks",
-  "Within a month",
+  "1–2 weeks",
+  "2–4 weeks",
   "Flexible",
+] as const;
+
+export const videoCountOptions = [
+  "1 video",
+  "2–5 videos",
+  "6–10 videos",
+  "10+ videos",
+  "Ongoing / monthly",
+  "Not sure yet",
 ] as const;
 
 export const durationOptions = [
