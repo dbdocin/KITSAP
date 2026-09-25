@@ -16,7 +16,7 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   /* Fluid type scale */
-  --text-hero: clamp(2.75rem, 1.2rem + 7.2vw, 8.5rem);
+  --text-hero: clamp(2.5rem, 0.8rem + 6.2vw, 6.5rem);
   --text-hero--line-height: 0.92;
   --text-hero--letter-spacing: -0.04em;
   --text-hero--font-weight: 700;
@@ -25,6 +25,11 @@
   --text-h2--line-height: 1;
   --text-h2--letter-spacing: -0.03em;
   --text-h2--font-weight: 700;
+
+  --text-display: clamp(1.75rem, 1rem + 2.8vw, 3.25rem);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.03em;
+  --text-display--font-weight: 700;
 
   --text-h3: clamp(1.25rem, 1rem + 1.2vw, 2rem);
   --text-h3--line-height: 1.15;
@@ -46,7 +51,22 @@
 
   /* Layout */
   --spacing-gutter: clamp(1.25rem, 0.5rem + 3vw, 3rem);
+
+  /* Motion — used with `motion-safe:` so reduced-motion users get none */
+  --animate-scroll-cue: scroll-cue 2.2s ease-in-out infinite;
+
+  @keyframes scroll-cue {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
 }
+
+/* Only devices that can actually hover get hover-reveal behaviour. */
+@custom-variant can-hover (@media (hover: hover));
 
 @layer base {
   html {

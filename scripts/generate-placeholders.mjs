@@ -22,19 +22,19 @@ function svg({ id, w, h, glowX, glowY, glowR, glowOpacity, tint, grain, seed }) 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Placeholder frame">
   <defs>
     <radialGradient id="glow-${id}" cx="${glowX}" cy="${glowY}" r="${glowR}" gradientUnits="objectBoundingBox">
-      <stop offset="0" stop-color="${tint}" stop-opacity="${glowOpacity}"/>
+      <stop offset="0" stop-color="${tint}" stop-opacity="${Math.min(0.5, glowOpacity * 2.2).toFixed(2)}"/>
       <stop offset="1" stop-color="${tint}" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="fade-${id}" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#080808" stop-opacity="0"/>
-      <stop offset="1" stop-color="#080808" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#080808" stop-opacity="0.45"/>
     </linearGradient>
     <filter id="grain-${id}" x="0" y="0" width="100%" height="100%">
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="${seed}" stitchTiles="stitch"/>
       <feColorMatrix type="saturate" values="0"/>
     </filter>
   </defs>
-  <rect width="${w}" height="${h}" fill="#0d0d0d"/>
+  <rect width="${w}" height="${h}" fill="#161616"/>
   <rect width="${w}" height="${h}" fill="url(#glow-${id})"/>
   <rect width="${w}" height="${h}" fill="url(#fade-${id})"/>
   <rect width="${w}" height="${h}" filter="url(#grain-${id})" opacity="${grain}"/>

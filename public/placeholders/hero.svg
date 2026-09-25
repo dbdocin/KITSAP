@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="Placeholder frame">
   <defs>
     <radialGradient id="glow-hero" cx="0.72" cy="0.3" r="0.7" gradientUnits="objectBoundingBox">
-      <stop offset="0" stop-color="#c8ff3d" stop-opacity="0.16"/>
+      <stop offset="0" stop-color="#c8ff3d" stop-opacity="0.35"/>
       <stop offset="1" stop-color="#c8ff3d" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="fade-hero" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#080808" stop-opacity="0"/>
-      <stop offset="1" stop-color="#080808" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#080808" stop-opacity="0.45"/>
     </linearGradient>
     <filter id="grain-hero" x="0" y="0" width="100%" height="100%">
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" stitchTiles="stitch"/>
       <feColorMatrix type="saturate" values="0"/>
     </filter>
   </defs>
-  <rect width="1920" height="1080" fill="#0d0d0d"/>
+  <rect width="1920" height="1080" fill="#161616"/>
   <rect width="1920" height="1080" fill="url(#glow-hero)"/>
   <rect width="1920" height="1080" fill="url(#fade-hero)"/>
   <rect width="1920" height="1080" filter="url(#grain-hero)" opacity="0.1"/>

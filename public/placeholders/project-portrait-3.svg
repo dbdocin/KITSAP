@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="1600" viewBox="0 0 900 1600" role="img" aria-label="Placeholder frame">
   <defs>
     <radialGradient id="glow-projectportrait3" cx="0.7" cy="0.45" r="0.8" gradientUnits="objectBoundingBox">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.11"/>
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.24"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="fade-projectportrait3" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#080808" stop-opacity="0"/>
-      <stop offset="1" stop-color="#080808" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#080808" stop-opacity="0.45"/>
     </linearGradient>
     <filter id="grain-projectportrait3" x="0" y="0" width="100%" height="100%">
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="33" stitchTiles="stitch"/>
       <feColorMatrix type="saturate" values="0"/>
     </filter>
   </defs>
-  <rect width="900" height="1600" fill="#0d0d0d"/>
+  <rect width="900" height="1600" fill="#161616"/>
   <rect width="900" height="1600" fill="url(#glow-projectportrait3)"/>
   <rect width="900" height="1600" fill="url(#fade-projectportrait3)"/>
   <rect width="900" height="1600" filter="url(#grain-projectportrait3)" opacity="0.11"/>

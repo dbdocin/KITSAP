@@ -12,10 +12,13 @@ interface AccordionProps {
   items: readonly AccordionItem[];
   /** Index of the item open on first render. */
   defaultOpen?: number;
+  /** Heading level for each question, so it fits the page outline. */
+  headingLevel?: 2 | 3;
   className?: string;
 }
 
-export function Accordion({ items, defaultOpen, className }: AccordionProps) {
+export function Accordion({ items, defaultOpen, headingLevel = 3, className }: AccordionProps) {
+  const Heading = `h${headingLevel}` as const;
   const baseId = useId();
   const [openIndex, setOpenIndex] = useState<number | null>(defaultOpen ?? null);
   const triggers = useRef<(HTMLButtonElement | null)[]>([]);
@@ -44,7 +47,7 @@ export function Accordion({ items, defaultOpen, className }: AccordionProps) {
 
         return (
           <div key={item.question} className="border-b border-border">
-            <h3>
+            <Heading>
               <button
                 ref={(node) => {
                   triggers.current[index] = node;
@@ -71,7 +74,7 @@ export function Accordion({ items, defaultOpen, className }: AccordionProps) {
                   />
                 </span>
               </button>
-            </h3>
+            </Heading>
             <div
               id={panelId}
               role="region"

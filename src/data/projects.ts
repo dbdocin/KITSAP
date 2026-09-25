@@ -1,4 +1,14 @@
-import type { Project } from "@/types";
+import type { Project, ProjectCategory } from "@/types";
+
+/** Order used by the portfolio filter. */
+export const projectCategories: readonly ProjectCategory[] = [
+  "YouTube",
+  "Reels",
+  "Commercial",
+  "Corporate",
+  "Podcast",
+  "Events",
+];
 
 // PLACEHOLDER — every project below is a stand-in. Replace with real work,
 // then remove `isPlaceholder`. Never publish invented clients or results.

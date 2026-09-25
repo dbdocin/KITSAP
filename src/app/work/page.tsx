@@ -1,16 +1,31 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import { ProjectGrid } from "@/components/portfolio/ProjectGrid";
+import { WorkExplorer } from "@/components/portfolio/WorkExplorer";
+import { FinalCTA } from "@/components/sections/FinalCTA";
+import { PageHeader } from "@/components/sections/PageHeader";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+import { projects } from "@/data/projects";
 
-export const metadata: Metadata = { title: "Work" };
+export const metadata: Metadata = {
+  title: "Work",
+  description: "A selection of video editing projects crafted by KITSAP.",
+};
 
-// Stub — replaced in a later phase.
-export default function Page() {
+export default function WorkPage() {
   return (
-    <Section className="pt-32 md:pt-40 lg:pt-44">
-      <Container>
-        <h1 className="text-h2 uppercase">Selected work</h1>
-      </Container>
-    </Section>
+    <>
+      <PageHeader title="SELECTED WORK" subtitle="A selection of projects crafted by KITSAP." />
+      <Section className="pt-4 md:pt-4 lg:pt-4">
+        <Container>
+          {/* useSearchParams needs a Suspense boundary; the fallback is the full grid. */}
+          <Suspense fallback={<ProjectGrid projects={projects} />}>
+            <WorkExplorer projects={projects} />
+          </Suspense>
+        </Container>
+      </Section>
+      <FinalCTA />
+    </>
   );
 }
