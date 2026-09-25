@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
+import { VideoEmbed } from "@/components/portfolio/VideoEmbed";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Container } from "@/components/ui/Container";
 import { MediaImage } from "@/components/ui/MediaImage";
 import { Section } from "@/components/ui/Section";
 import { projects } from "@/data/projects";
 import { getEmbedUrl, getProjectBySlug, getRelatedProjects } from "@/lib/projects";
+import { pageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types";
 
@@ -29,9 +31,17 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
-  if (!project) return { title: "Project not found" };
+  if (!project) return { title: "Project not found", robots: { index: false } };
 
-  return { title: project.title, description: project.description };
+  return pageMetadata({
+    title: project.title,
+    description: project.description,
+    path: `/work/${project.slug}`,
+    image: {
+      openGraph: `/work/${project.slug}/opengraph-image`,
+      twitter: `/work/${project.slug}/twitter-image`,
+    },
+  });
 }
 
 function TextList({ title, items }: { title: string; items: readonly string[] }) {
@@ -91,7 +101,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               src={heroImage}
               alt={`${project.title} — ${project.category} project`}
               sizes="(min-width: 1280px) 1184px, 100vw"
-              priority
             />
           </div>
         </Container>
@@ -105,15 +114,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
               {embedUrl && (
                 <div className="relative mt-12 aspect-video w-full overflow-hidden bg-card">
-                  <iframe
-                    src={embedUrl}
-                    title={`${project.title} — video`}
-                    loading="lazy"
-                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                    allowFullScreen
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    className="absolute inset-0 h-full w-full border-0"
-                  />
+                  <VideoEmbed src={embedUrl} title={project.title} poster={heroImage} />
                 </div>
               )}
             </div>

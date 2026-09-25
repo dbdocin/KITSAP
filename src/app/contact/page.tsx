@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { ContactSidePanel } from "@/components/contact/ContactSidePanel";
 import { PageHeader } from "@/components/sections/PageHeader";
@@ -6,11 +7,12 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { siteConfig } from "@/config/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Start a Project",
   description:
     "Tell KITSAP what you're creating, what you need and when you need it. We'll get back to you with the next steps.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   const contactEmail = siteConfig.contact.email || undefined;

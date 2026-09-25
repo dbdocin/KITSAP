@@ -16,7 +16,7 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   /* Fluid type scale */
-  --text-hero: clamp(2.5rem, 0.8rem + 6.2vw, 6.5rem);
+  --text-hero: clamp(2.25rem, 0.5rem + 6.6vw, 6.5rem);
   --text-hero--line-height: 0.92;
   --text-hero--letter-spacing: -0.04em;
   --text-hero--font-weight: 700;
@@ -84,6 +84,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
   }
 
   :focus-visible {

@@ -45,7 +45,7 @@ export function Navbar() {
           <Link
             href="/"
             aria-label={`${siteConfig.name} — home`}
-            className="text-lg font-bold tracking-[0.2em] text-text"
+            className="inline-flex min-h-11 items-center text-lg font-bold tracking-[0.2em] text-text"
           >
             {siteConfig.name}
           </Link>

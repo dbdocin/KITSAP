@@ -17,7 +17,7 @@ interface FieldShellProps {
 }
 
 const controlClass =
-  "block w-full min-h-11 border bg-card px-4 py-3 text-text placeholder:text-text-muted transition-colors duration-200 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+  "block w-full min-h-11 border bg-card px-4 py-3 text-text placeholder:text-text-secondary transition-colors duration-200 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 function controlBorder(hasError: boolean) {
   return hasError ? "border-[#ff6b6b]" : "border-border hover:border-text-muted";

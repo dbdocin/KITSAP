@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- PLACEHOLDER — typographic "K" until the real logo arrives (see README: "Replacing the logo"). -->
+  <rect width="32" height="32" rx="6" fill="#080808"/>
+  <g fill="none" stroke="#F5F5F5" stroke-width="3.4" stroke-linecap="butt" stroke-linejoin="miter">
+    <path d="M10.5 7v18"/>
+    <path d="M10.5 17.5 20.5 7"/>
+    <path d="M14.5 15 21.5 25"/>
+  </g>
+  <rect x="23.5" y="22" width="3.5" height="3.5" fill="#C8FF3D"/>
+</svg>

@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ContactEmail, LegalPage, LegalSection } from "@/components/sections/LegalPage";
 import { siteConfig } from "@/config/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Terms of Service",
-  description: "The terms for using kitsap.work and requesting work from KITSAP.",
-};
+  description:
+    "The terms for using kitsap.work and requesting work from KITSAP.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

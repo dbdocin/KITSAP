@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { Button } from "@/components/ui/Button";
@@ -10,11 +11,12 @@ import { cta } from "@/config/navigation";
 import { services } from "@/data/services";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
     "Video editing, Reels and short-form, podcast editing, and creative and motion work from KITSAP.",
-};
+  path: "/services",
+});
 
 function DetailList({ title, items }: { title: string; items: readonly string[] }) {
   return (

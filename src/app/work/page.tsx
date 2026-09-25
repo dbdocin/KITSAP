@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Suspense } from "react";
 import { ProjectGrid } from "@/components/portfolio/ProjectGrid";
 import { WorkExplorer } from "@/components/portfolio/WorkExplorer";
@@ -8,10 +9,12 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { projects } from "@/data/projects";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Work",
-  description: "A selection of video editing projects crafted by KITSAP.",
-};
+  description:
+    "A selection of video editing projects crafted by KITSAP.",
+  path: "/work",
+});
 
 export default function WorkPage() {
   return (
@@ -20,7 +23,7 @@ export default function WorkPage() {
       <Section className="pt-4 md:pt-4 lg:pt-4">
         <Container>
           {/* useSearchParams needs a Suspense boundary; the fallback is the full grid. */}
-          <Suspense fallback={<ProjectGrid projects={projects} />}>
+          <Suspense fallback={<ProjectGrid projects={projects} headingLevel={2} />}>
             <WorkExplorer projects={projects} />
           </Suspense>
         </Container>

@@ -7,6 +7,8 @@ interface ProjectCardProps {
   project: Project;
   /** `sizes` hint for next/image, matching the card's rendered width. */
   sizes?: string;
+  /** Heading level for the title, so it fits the page outline. */
+  headingLevel?: 2 | 3;
   className?: string;
 }
 
@@ -19,8 +21,11 @@ const aspectClasses: Record<Project["aspect"], string> = {
 export function ProjectCard({
   project,
   sizes = "(min-width: 1024px) 40vw, 100vw",
+  headingLevel = 3,
   className,
 }: ProjectCardProps) {
+  const Heading = `h${headingLevel}` as const;
+
   return (
     <Link
       href={`/work/${project.slug}`}
@@ -41,7 +46,7 @@ export function ProjectCard({
         {/* Always visible on touch devices; revealed on hover or keyboard focus otherwise. */}
         <div className="absolute inset-x-0 bottom-0 p-5 transition-[opacity,transform] duration-300 can-hover:translate-y-2 can-hover:opacity-0 can-hover:group-hover:translate-y-0 can-hover:group-hover:opacity-100 can-hover:group-focus-visible:translate-y-0 can-hover:group-focus-visible:opacity-100 motion-reduce:transition-none motion-reduce:can-hover:translate-y-0 md:p-6">
           <p className="text-label uppercase text-accent">{project.category}</p>
-          <h3 className="mt-2 text-h3">{project.title}</h3>
+          <Heading className="mt-2 text-h3">{project.title}</Heading>
         </div>
       </div>
     </Link>

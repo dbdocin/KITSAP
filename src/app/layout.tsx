@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { siteConfig } from "@/config/site";
+import { HOME_DESCRIPTION, SHARE_DESCRIPTION, SHARE_TITLE, absoluteUrl } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,23 +20,51 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const description =
-  "Professional video editing and creative services for creators, brands and businesses.";
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — ${siteConfig.tagline}`,
-    template: `%s | ${siteConfig.name}`,
+    default: SHARE_TITLE,
+    template: `%s — ${siteConfig.name}`,
   },
-  description,
+  description: HOME_DESCRIPTION,
+  // Fallbacks for routes that don't set their own (each page sets these in full).
+  openGraph: {
+    type: "website",
+    siteName: siteConfig.name,
+    locale: "en_US",
+    title: SHARE_TITLE,
+    description: SHARE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SHARE_TITLE,
+    description: SHARE_DESCRIPTION,
+  },
 };
 
 export const viewport: Viewport = {
   themeColor: "#080808",
 };
 
+/** Organization structured data. Social links appear only when set; no address or phone is invented. */
+function organizationJsonLd() {
+  const sameAs = Object.values(siteConfig.social).filter((url) => url.length > 0);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    // PLACEHOLDER — points at the placeholder icon until the real logo arrives.
+    logo: absoluteUrl("/icon.svg"),
+    ...(sameAs.length > 0 ? { sameAs } : {}),
+  };
+}
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  // `<` is escaped so the JSON can never close the script tag early.
+  const jsonLd = JSON.stringify(organizationJsonLd()).replace(/</g, "\\u003c");
+
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
@@ -49,6 +79,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {children}
         </main>
         <Footer />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
+        {/* Off by default. Vercel Analytics sets no cookies and tracks nothing else. */}
+        {siteConfig.features.analytics && <Analytics />}
       </body>
     </html>
   );

@@ -65,7 +65,7 @@ export function WorkExplorer({ projects }: WorkExplorerProps) {
 
       <div className="mt-12 md:mt-16">
         {visible.length > 0 ? (
-          <ProjectGrid projects={visible} />
+          <ProjectGrid projects={visible} headingLevel={2} />
         ) : (
           <div className="border border-border px-6 py-16 text-center">
             <p className="text-h3">No projects in this category yet.</p>

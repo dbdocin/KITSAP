@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Process",
-  description: "How a KITSAP project works, from your first brief to the final delivered files.",
-};
+  description:
+    "How a KITSAP project works, from your first brief to the final delivered files.",
+  path: "/process",
+});
 
 const steps = [
   {

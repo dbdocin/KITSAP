@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { Container } from "@/components/ui/Container";
@@ -6,11 +7,12 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { team } from "@/data/team";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
     "KITSAP is a creative post-production studio focused on turning ideas and raw footage into content people want to watch.",
-};
+  path: "/about",
+});
 
 const principles = [
   {

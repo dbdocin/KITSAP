@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ContactEmail, LegalPage, LegalSection } from "@/components/sections/LegalPage";
 import { siteConfig } from "@/config/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
-  description: "How KITSAP handles the information you send through kitsap.work.",
-};
+  description:
+    "How KITSAP handles the information you send through kitsap.work.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
+  const analyticsOn: boolean = siteConfig.features.analytics;
+
   return (
     <LegalPage title="PRIVACY POLICY">
       <LegalSection title="Who we are">
@@ -49,10 +54,15 @@ export default function PrivacyPage() {
           The website is hosted on a third-party platform, which may record technical information
           such as your IP address in server logs.
         </p>
-        <p>
-          This site does not currently use advertising cookies or analytics. [Update this section if
-          analytics is turned on.]
-        </p>
+        {analyticsOn ? (
+          <p>
+            This site uses Vercel Analytics to count page views in aggregate. It does not set
+            cookies and does not use advertising trackers. [Have this description checked against
+            the provider&apos;s current documentation.]
+          </p>
+        ) : (
+          <p>This site does not currently use advertising cookies or analytics.</p>
+        )}
       </LegalSection>
 
       <LegalSection title="How long we keep it">
